@@ -131,12 +131,31 @@
             border-radius: 5px;
             cursor: pointer;
             font-size: 1.1em;
-            transition: background-color 0.3s ease;
+            position: relative;
+            transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .download-button:hover {
             background-color: #45a049;
+            transform: scale(1.05); 
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
+
+        .download-button:hover {
+            color: transparent;
+        }
+
+        .download-button:hover::after {
+            content: attr(data-size); 
+            color: white;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.1em;
+            white-space: nowrap;
+        }
+
 
         .download-card img {
             width: 100%; 
@@ -159,7 +178,7 @@
             }
 
             .card {
-                width: 60%;
+                width: 90%;
                 margin: 10px 0;
             }
 
@@ -248,7 +267,7 @@
 
     <div class="download-card">
         <img src="assets/exe_download.png" alt="DowloadEXE"> 
-        <button class="download-button">Скачать .exe</button>
+        <button class="download-button" data-size="15 MB">Скачать .exe</button>
     </div>
 
     <script>
@@ -269,5 +288,7 @@
             }
         }
     </script>
+
+    
 </body>
 </html>
