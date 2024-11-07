@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFO DATABASE</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(180deg, #134E5E, #71B280); 
+            color: white;
+        }
+
+        header {
+            background-color: rgba(51, 51, 51, 0.219);
+            color: white;
+            text-align: center;
+            padding: 1.5em 0;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 20px auto;
+            padding: 0 20px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card {
+            width: 260px; 
+            margin: 15px;
+            background-color: #ffffffe8;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.288);
+        }
+
+        .card img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            font-size: 1.4em;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 1em;
+            color: #666;
+        }
+
+        .description {
+            text-align: center;
+            margin-top: 40px;
+            color: #333; 
+            line-height: 1.6;
+            font-size: 1.1em;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+
+        .description p {
+            font-size: 1.1em;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .description-content {
+            display: none;
+            margin-top: 20px;
+            font-size: 1em;
+            color: #555;
+            line-height: 1.6;
+            text-align: left;
+            opacity: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: opacity 0.5s ease, max-height 1s ease;
+        }
+
+        .description:hover {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        .download-card {
+            width: 260px;
+            margin: 20px 0;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            text-align: center;
+
+            position: fixed;
+            right: 20px; 
+            bottom: 20px; 
+        }
+
+        .download-button {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .download-button:hover {
+            background-color: #45a049;
+        }
+
+        .download-card img {
+            width: 100%; 
+            height: auto;
+            max-width: 100px; 
+            margin-bottom: 15px;
+        }
+        .card a {
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            
+            .container {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .card {
+                width: 90%;
+                margin: 10px 0;
+            }
+
+            .download-card {
+                width: 90%;
+                position: static;
+                margin: 20px auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8em;
+            }
+
+            .download-button {
+                font-size: 1em;
+                padding: 10px;
+            }
+
+            .description {
+                font-size: 1em;
+                padding: 15px;
+            }
+
+            .description p {
+                font-size: 0.9em;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>UFO DATABASE</h1>
+    </header>
+
+    <div class="container">
+        <div class="card">
+            <a href="https://github.com/atxxxm/UFO-DB" target="_blank">
+                <img src="assets/c_plus.png" alt="C++">  
+                <h3>C++</h3>
+                <p>Библиотека на C++</p>
+            </a>
+        </div>
+        
+        <div class="card">
+            <a href="https://github.com/SL1dee36/pyufo-db" target="_blank">
+                <img src="assets/python.png" alt="Python">
+                <h3>Python</h3>
+                <p>Библиотека на Python</p>
+            </a>
+        </div>
+        <div class="card">
+            <a href="https://github.com/atxxxm/UFO-DB-APP" target="_blank">
+                <img src="assets/exe.png" alt="EXE"> 
+                <h3>EXE</h3>
+                <p>Приложение .EXE</p>
+            </a>
+        </div>
+    </div>
+
+    <div class="description" onclick="toggleDescription()">
+        <p><strong>Описание</strong></p>
+        
+        <div class="description-content" id="descriptionContent">
+            <p>Библиотека UFO DB — это мощное и гибкое решение для работы с базами данных, хранящимися в виде таблиц. Она позволяет создавать, редактировать и управлять данными, сохраняя и загружая их из файлов. Библиотека предоставляет интуитивный интерфейс для выполнения различных операций с данными, таких как добавление, обновление и удаление записей, а также выборка данных по различным критериям.</p>
+
+            <p><strong>Ключевые возможности:</strong></p>
+            <p>Создание и управление таблицами: Легко создавайте новые таблицы, определяя имена и типы столбцов.</p>
+            <p>Добавление и обновление данных: Добавляйте новые записи в таблицы и изменяйте существующие данные с помощью удобных методов. Библиотека обеспечивает проверку целостности данных, минимизируя риск ошибок.</p>
+            <p>Выбор данных: Выбирайте данные из таблиц, используя различные критерии поиска, включая выборку всех данных или поиск по определенным полям и значениям.</p>
+            <p>Сохранение и загрузка данных: Сохраняйте данные базы данных в файлы и загружайте их обратно, что обеспечивает простоту резервного копирования и переноса данных.</p>
+            <p>Обработка ошибок: Библиотека эффективно обрабатывает ошибки, предоставляя информативные сообщения об ошибках и исключения, что упрощает отладку и разработку.</p>
+
+            <p><strong>Улучшения в последней версии:</strong></p>
+            <p>Упрощенный интерфейс: Методы для добавления и обновления данных стали более интуитивными и удобными в использовании.</p>
+            <p>Улучшенная обработка ошибок: Более надежная обработка исключений и более информативные сообщения об ошибках.</p>
+            <p>Расширенные возможности выбора данных: Возможность выбора данных по заданному условию (фильтрация).</p>
+            <p>Удаление записей: Добавлена функциональность для удаления записей из таблиц.</p>
+            <p>Более эффективная обработка файлов: Улучшена производительность и надежность операций сохранения и загрузки данных из файлов.</p>
+
+            <p>UFO DB — это идеальный выбор для разработчиков, которым нужна надежная и простая в использовании библиотека для работы с базами данных в своих приложениях. Она обеспечивает высокую производительность и гибкость, позволяя создавать приложения с различными требованиями к обработке данных.</p>
+        </div>
+    </div>
+
+    <div class="download-card">
+        <img src="assets/exe_download.png" alt="DowloadEXE"> 
+        <button class="download-button">Скачать .exe</button>
+    </div>
+
+    <script>
+        function toggleDescription() {
+            var content = document.getElementById('descriptionContent');
+            if (content.style.display === 'none' || content.style.display === '') {
+                content.style.display = 'block';
+                setTimeout(function() {
+                    content.style.opacity = '1';
+                    content.style.maxHeight = '2000px'; 
+                }, 10);
+            } else {
+                content.style.opacity = '0';
+                content.style.maxHeight = '0'; 
+                setTimeout(function() {
+                    content.style.display = 'none';
+                }, 500); 
+            }
+        }
+    </script>
+</body>
+</html>
