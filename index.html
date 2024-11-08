@@ -347,24 +347,24 @@
 
             setTimeout(() => {
                 h1.classList.add('show');
-            }, 500); 
+            }, 700); 
 
             setTimeout(() => {
                 img.classList.add('show');
                 img.style.animation = "iconZoomIn 0.6s ease-out forwards";
-            }, 1000);
+            }, 1200);
 
             const cards = document.querySelectorAll('.card');
             cards.forEach((card, index) => {
                 setTimeout(() => {
                     card.classList.add('show');
-                }, 1600 + index * 150); 
+                }, 1800 + index * 150); 
             });
 
             const description = document.querySelector('.description');
             setTimeout(() => {
                 description.classList.add('show');
-            }, 1600 + cards.length * 150);
+            }, 1800 + cards.length * 150);
         });
     </script>
 
