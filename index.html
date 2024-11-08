@@ -18,6 +18,45 @@
             color: white;
             text-align: center;
             padding: 1.5em 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: translateY(-100%);
+            transition: transform 0.8s ease-in-out;
+        }
+
+        header.show {
+            transform: translateY(0); 
+        }
+
+        header h1 {
+            opacity: 0;
+            transition: opacity 0.5s ease-in-out 0.3s; 
+            margin: 0 10px;
+        }
+
+        header h1.show {
+            opacity: 1;
+        }
+
+        header img {
+            opacity: 0;
+            height: 40px;
+        }
+
+        header img.show {
+            opacity: 1;
+        }
+
+        @keyframes iconZoomIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 1;
+            }
         }
 
         h1 {
@@ -44,6 +83,18 @@
             padding: 20px;
             text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column; 
+            align-items: center; 
+            opacity: 0; 
+            transform: scale(0.8);
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            
+        }
+
+        .card.show {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .card:hover {
@@ -81,7 +132,14 @@
             background-color: rgba(255, 255, 255, 0.8);
             padding: 20px;
             border-radius: 8px;
-            transition: background-color 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px); 
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+
+        .description.show {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .description p {
@@ -107,23 +165,8 @@
             background-color: rgba(255, 255, 255, 0.9);
         }
 
-        .download-card {
-            width: 260px;
-            margin: 20px 0;
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-            padding: 20px;
-            text-align: center;
-
-            position: fixed;
-            right: 20px; 
-            bottom: 20px; 
-        }
-
         .download-button {
             display: block;
-            width: 100%;
             padding: 12px;
             background-color: #4CAF50;
             color: white;
@@ -133,6 +176,8 @@
             font-size: 1.1em;
             position: relative;
             transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+            margin-top: 20px; 
+            width: fit-content;
         }
 
         .download-button:hover {
@@ -156,14 +201,11 @@
             white-space: nowrap;
         }
 
-
-        .download-card img {
-            width: 100%; 
-            height: auto;
-            max-width: 100px; 
-            margin-bottom: 15px;
-        }
         .card a {
+            text-decoration: none;
+        }
+
+        .download-card a{
             text-decoration: none;
         }
 
@@ -178,12 +220,12 @@
             }
 
             .card {
-                width: 60%;
+                width: 90%;
                 margin: 10px 0;
             }
 
             .download-card {
-                width: 60%;
+                width: 90%;
                 position: static;
                 margin: 20px auto;
             }
@@ -213,6 +255,7 @@
 </head>
 <body>
     <header>
+        <img src="assets/ufo_icon.png" alt="UFO Database Icon">
         <h1>UFO DATABASE</h1>
     </header>
 
@@ -238,6 +281,13 @@
                 <h3>EXE</h3>
                 <p>Приложение .EXE</p>
             </a>
+
+            <div class="download-card">
+                <a href="file\setup.exe" class="download-button" download data-size="33.6 MB">
+                    Скачать .exe
+                </a>
+            </div>    
+
         </div>
     </div>
 
@@ -265,11 +315,6 @@
         </div>
     </div>
 
-    <div class="download-card">
-        <img src="assets/exe_download.png" alt="DowloadEXE"> 
-        <button class="download-button" data-size="15 MB">Скачать .exe</button>
-    </div>
-
     <script>
         function toggleDescription() {
             var content = document.getElementById('descriptionContent');
@@ -287,6 +332,39 @@
                 }, 500); 
             }
         }
+    </script>
+
+    <script>
+        window.addEventListener('load', () => {
+            const header = document.querySelector('header');
+            const h1 = header.querySelector('h1');
+            const img = header.querySelector('img');
+
+            setTimeout(() => {
+                header.classList.add('show');
+            }, 100); 
+
+            setTimeout(() => {
+                h1.classList.add('show');
+            }, 500); 
+
+            setTimeout(() => {
+                img.classList.add('show');
+                img.style.animation = "iconZoomIn 0.6s ease-out forwards";
+            }, 1000);
+
+            const cards = document.querySelectorAll('.card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('show');
+                }, 1600 + index * 150); 
+            });
+
+            const description = document.querySelector('.description');
+            setTimeout(() => {
+                description.classList.add('show');
+            }, 1600 + cards.length * 150);
+        });
     </script>
 
     
