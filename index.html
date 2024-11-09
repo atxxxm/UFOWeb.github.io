@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UFO DATABASE</title>
     <style>
+        :root {
+            --main-color-1: #134E5E;
+            --main-color-2: #71B280;
+        }
         body {
             font-family: 'Roboto', sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(180deg, #134E5E, #71B280); 
+            background: linear-gradient(180deg, var(--main-color-1), var(--main-color-2));
             color: white;
         }
 
@@ -117,6 +121,12 @@
         .card p {
             font-size: 1em;
             color: #666;
+        }
+
+        .card.hide {
+            opacity: 0;
+            transform: scale(0.8);
+            display: none;
         }
 
         .description {
@@ -252,6 +262,39 @@
             }
         }
 
+        .developers-button {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            padding: 15px 25px;
+            background-color: #71B280;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1em;
+            opacity: 0; 
+            transform: translateY(20px); 
+            transition: opacity 0.5s ease-in-out, transform 0.5s ease-in-out; 
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .developers-button.show {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .developers-button:hover {
+            background-color: #134E5E;
+            transform: scale(1.05);
+        }
+
+        .developers-button a {
+            text-decoration: none;
+            color: white;
+        }
+
+
     </style>
 </head>
 <body>
@@ -316,6 +359,10 @@
         </div>
     </div>
 
+    <button class="developers-button">
+        <a href="info.html" target="_blank">Разработчики</a>
+    </button>
+
     <script>
         function toggleDescription() {
             var content = document.getElementById('descriptionContent');
@@ -340,6 +387,7 @@
             const header = document.querySelector('header');
             const h1 = header.querySelector('h1');
             const img = header.querySelector('img');
+            const develop = document.querySelector('.developers-button')
 
             setTimeout(() => {
                 header.classList.add('show');
@@ -358,13 +406,15 @@
             cards.forEach((card, index) => {
                 setTimeout(() => {
                     card.classList.add('show');
-                }, 1800 + index * 150); 
+                }, 1800 + index * 250); 
             });
 
             const description = document.querySelector('.description');
             setTimeout(() => {
                 description.classList.add('show');
+                develop.classList.add('show');
             }, 1800 + cards.length * 150);
+
         });
     </script>
 
