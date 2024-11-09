@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UFO DATABASE</title>
+    <style>
+        :root {
+            --main-color-1: #134E5E;
+            --main-color-2: #71B280;
+            --accent-color: #FFD700;
+            --gradient-animation-duration: 3s; 
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: linear-gradient(180deg, var(--main-color-1), var(--main-color-2));
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        .card-container {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            flex-wrap: wrap;
+            margin-top: 50px;
+        }
+
+        .e-card {
+            background: linear-gradient(180deg, var(--main-color-1), var(--main-color-2));
+            box-shadow: 0px 8px 28px -9px rgba(0, 0, 0, 0.45);
+            position: relative;
+            width: 300px;
+            height: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            margin-bottom: 20px;
+            transition: transform 0.3s ease-in-out;
+            text-align: center;
+        }
+
+        .e-card:hover {
+            transform: scale(1.05);
+        }
+
+        .wave {
+            position: absolute;
+            width: 540px;
+            height: 700px;
+            opacity: 0.6;
+            left: 0;
+            top: 0;
+            margin-left: -50%;
+            margin-top: -70%;
+            background: linear-gradient(744deg, #629da8, var(--main-color-2) 60%, #72b2a4);
+            border-radius: 40%;
+            animation: wave 55s infinite linear;
+        }
+
+        .wave:nth-child(2) {
+            animation-duration: 50s;
+            top: 210px;
+        }
+
+        .wave:nth-child(3) {
+            animation-duration: 45s;
+            top: 210px;
+        }
+
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .icon {
+            width: 3em;
+            margin-top: -1em;
+            padding-bottom: 1em;
+        }
+
+        .infotop {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgb(255, 255, 255);
+            font-weight: 600;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .name {
+            font-size: 18px;
+            font-weight: 300;
+            margin-top: 10px;
+            background-image: conic-gradient(from 0deg, #fff, #fff, #ccc, #ccc); 
+            background-size: 200% 100%;
+            background-clip: text; 
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientAnimation var(--gradient-animation-duration) linear infinite;
+            transition: transform 0.3s ease;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            100% { background-position: -100% 50%; } 
+        }
+        .name:hover {
+            transform: scale(1.1); 
+        }
+
+
+        .developers-text {
+            font-size: 45px;
+            font-weight: 600;
+            color: white;
+            margin-top: 80px;
+            text-align: center;
+            opacity: 1; 
+            transition: opacity 1s ease; 
+        }
+        .developers-text.hidden {
+            opacity: 0;
+        }
+        
+        img {
+            width: 100px;
+            height: auto;
+            border-radius: 50%;
+            margin-top: 10px;
+            transition: transform 0.3s ease;
+        }
+
+        .e-card:hover img {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1 class="developers-text">Разработчики</h1>
+    </div>
+
+    <div class="card-container" id="cardContainer">
+
+        <div class="e-card playing">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="infotop">
+                <img src="https://avatars.githubusercontent.com/u/186292181?v=4">
+                <br>
+                <span class="name"><a href="https://github.com/atxxxm" target="_blank">ATXM</a></span>
+            </div>
+        </div>
+
+
+        <div class="e-card playing">
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="wave"></div>
+            <div class="infotop">
+                <img src="https://avatars.githubusercontent.com/u/84046495?v=4">
+                <br>
+                <span class="name"><a href="https://github.com/SL1dee36" target="_blank">Nazaryan ART</a></span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const names = document.querySelectorAll('.name');
+        names.forEach(name => {
+            let offset = 0;
+            setInterval(() => {
+                offset += 0.5;  
+                name.style.backgroundPosition = `${offset}% 50%`;
+            }, 20); 
+        });
+
+    </script>
+</body>
+</html>
